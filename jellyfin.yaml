@@ -2,22 +2,22 @@ services:
   jellyfin:
     image: lscr.io/linuxserver/jellyfin:latest
     container_name: jellyfin
-    networks:
+    networks: # network added to use the same as SWAG container
       proxy:
     environment:
-      - PUID=1000
+      - PUID=1000 # configure user id and group id, default is 1000 but you can change it
       - PGID=1000
       - TZ=Europe/Madrid
-      - JELLYFIN_PublishedServerUrl=192.168.1.110 #optional
+      - JELLYFIN_PublishedServerUrl=192.168.1.110 # optional, this is the IP of the host running Jellyfin server
       - DOCKER_MODS=linuxserver/mods:jellyfin-opencl-intel
     volumes:
       - /merged/jellyfin/config:/config
       - /home/minipc/docker/jellyfin/transcodes:/transcodes
-      - /merged/rutorrent/downloads/TV:/data/tvshows:ro
+      - /merged/rutorrent/downloads/TV:/data/tvshows:ro # only read-only mode so Jellyfin will not be avable to delete media files by mistake
       - /merged/rutorrent/downloads/movies:/data/movies:ro
     ports:
-      - 8096:8096
-    devices:
+      - 8096:8096 # default Jellyfin port
+    devices: # devices part needed in case we want to support transcoding
       - /dev/dri:/dev/dri
     restart: unless-stopped
 
