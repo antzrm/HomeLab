@@ -10,8 +10,8 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=Europe/Madrid
-      - URL=REDACTED.dedyn.io
-      - VALIDATION=dns
+      - URL=REDACTED.dedyn.io # only include domain.dedyn.io here, not jellyfin.domain.dedyn.io for example
+      - VALIDATION=dns 
       - DNSPLUGIN=desec
       - SUBDOMAINS=wildcard
       - PROPAGATION=30
