@@ -1,0 +1,29 @@
+services:
+  swag:
+    image: lscr.io/linuxserver/swag:latest
+    container_name: swag
+    cap_add:
+      - NET_ADMIN
+    networks:
+       proxy:
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Madrid
+      - URL=REDACTED.dedyn.io
+      - VALIDATION=dns
+      - DNSPLUGIN=desec
+      - SUBDOMAINS=wildcard
+      - PROPAGATION=30
+      - DOCKER_MODS=linuxserver/mods:swag-dashboard|linuxserver/mods:swag-dbip
+    volumes:
+      - /home/minipc/docker/swag/config:/config
+      - /merged/jellyfin/config/log:/jellyfin:ro # where Jellyfin logs are stored, useful for Fail2ban rules
+    ports:
+      - 81:81 # SWAG dashboard will be accessible locally on http://LOCAL_IP:81
+      - 64443:443 # any port from the server (64443 in this case, which we would configure on the router as external port 443 - internal port 64443) will be redirected to 443 port on the container
+    restart: always
+
+networks:
+  proxy:
+    external: true
