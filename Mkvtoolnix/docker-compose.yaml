@@ -1,0 +1,15 @@
+services:
+  mkvtoolnix:
+    image: jlesage/mkvtoolnix
+    environment:
+      - USER_ID=1000
+      - GROUP_ID=1000
+      - TZ=Europe/Madrid
+      - DARK_MODE=1
+      - SECURE_CONNECTION=1
+    ports:
+      - "58000:5800"
+    volumes:
+      - "/home/minipc/docker/mkvtoolnix/config:/config:rw"
+      - "/merged/rutorrent/downloads/source:/storage:rw"
+    restart: unless-stopped
