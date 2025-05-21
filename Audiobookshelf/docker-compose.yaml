@@ -1,0 +1,21 @@
+services:
+  audiobookshelf:
+    image: ghcr.io/advplyr/audiobookshelf:latest
+    ports:
+      - 13378:80
+    networks:
+      proxy:
+    volumes:
+      - /merged/audiobookshelf/audiobooks:/audiobooks
+      - /merged/audiobookshelf/podcasts:/podcasts
+      - /home/minipc/docker/audiobookshelf/config:/config
+      - /home/minipc/docker/audiobookshelf/metadata:/metadata
+    environment:
+      - TZ=Europe/Madrid
+      - PUID=1000
+      - PGID=1000
+    restart: unless-stopped
+
+networks:
+  proxy:
+    external: true
