@@ -1,0 +1,12 @@
+services:
+  cyber-chef:
+    image: ghcr.io/gchq/cyberchef:latest
+    networks:
+     proxy:
+    ports:
+      - 8060:80
+    restart: always
+
+networks:
+  proxy:
+    external: true
