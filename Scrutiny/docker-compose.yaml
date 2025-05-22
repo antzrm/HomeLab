@@ -1,0 +1,23 @@
+services:
+  scrutiny:
+    container_name: scrutiny
+    image: ghcr.io/analogj/scrutiny:master-omnibus
+    cap_add: # need this special privileges to work
+      - SYS_RAWIO
+      - SYS_ADMIN
+    ports:
+      - "8181:8080" # webapp
+      - "8086:8086" # influxDB admin
+    environment:
+      - COLLECTOR_CRON_SCHEDULE="0 14 * * *" # in this case, scrutiny will run disk check every day at 14:00
+    volumes:
+      - /run/udev:/run/udev:ro
+      - ./config:/opt/scrutiny/config
+      - ./influxdb:/opt/scrutiny/influxdb
+    devices: # add all disks here (to check which are, use the command df -h for example)
+      - "/dev/sda"
+      - "/dev/sdb"
+      - "/dev/sdc"
+      - "/dev/sdd"
+      - "/dev/sde"
+    restart: unless-stopped
