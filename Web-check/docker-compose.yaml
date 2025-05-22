@@ -1,0 +1,9 @@
+services:
+  web-check:
+    image: ghcr.io/lissy93/web-check:latest
+    ports:
+      - 33000:3000
+    environment:
+      - TZ=Europe/Madrid
+      - PUID=1000
+      - PGID=1000
