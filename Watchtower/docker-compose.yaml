@@ -1,0 +1,24 @@
+services:
+  watchtower:
+    image: containrrr/watchtower
+    command:
+    restart: unless-stopped
+    networks:
+      proxy:
+    environment:
+      TZ: Europe/Madrid
+      WATCHTOWER_CLEANUP: "true" # remove old images after update (useful for saving space)
+      WATCHTOWER_SCHEDULE: 0 0 4 * * * # run it every day at 4 am
+      WATCHTOWER_WARN_ON_HEAD_FAILURE: "never"  # Disable HEAD warnings
+      WATCHTOWER_DISABLE_CONTAINERS: "jellyfin swag rtorrent-rutorrent" # if you want to exclude containers and do not autoupdate them
+      WATCHTOWER_ROLLING_RESTART: "true" # you can tell watchtower to do updates and restarts one by one - can be helpful
+      WATCHTOWER_NOTIFICATIONS: "gotify"
+      WATCHTOWER_NOTIFICATION_GOTIFY_URL: "https://gotify.domain.com"
+      WATCHTOWER_NOTIFICATION_GOTIFY_TOKEN: REDACTED
+      WATCHTOWER_NOTIFICATIONS_DELAY: 300
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+networks:
+  proxy:
+    external: true
