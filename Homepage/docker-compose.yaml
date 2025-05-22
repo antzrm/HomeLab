@@ -1,0 +1,21 @@
+services:
+  homepage:
+    image: ghcr.io/gethomepage/homepage:latest
+    container_name: homepage
+      #    networks:
+      #      proxy:
+    # uncomment if you are not using a reverse proxy
+    ports:
+      - 30000:3000
+    env_file: .env # use .env
+    volumes:
+      - ./config:/app/config # Make sure your local config directory exists
+      - ./icons:/app/public/icons # for custom icons
+      - /merged:/merged:ro 
+    environment:
+      PUID: $PUID # read them from .env
+      PGID: $PGID # read them from .env
+      HOMEPAGE_ALLOWED_HOSTS: 192.168.1.110:30000
+    restart: always
+    security_opt:
+      - no-new-privileges:true
