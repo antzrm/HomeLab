@@ -1,0 +1,141 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/latest/configs/services
+
+- Media&Notes:
+   - Jellyfin:
+        icon: jellyfin.svg
+        href: "{{HOMEPAGE_VAR_JELLYFIN_URL}}"
+        description: Media Server
+        widget:
+          type: jellyfin
+          url: "{{HOMEPAGE_VAR_JELLYFIN_URL}}"
+          key: "{{HOMEPAGE_VAR_JELLYFIN_API_TOKEN}}"
+          enableBlocks: true # optional, defaults to false
+          enableNowPlaying: true # optional, defaults to true
+          enableUser: true # optional, defaults to false
+          showEpisodeNumber: true # optional, defaults to false
+          expandOneStreamToTwoRows: true # optional, defaults to true
+          fields: ["movies", "series"]
+   - Vikunja:
+       icon: vikunja.svg
+       href: "{{HOMEPAGE_VAR_VIKUNJA_INTERNAL_URL}}"
+       description: To-do List
+       widget:
+         type: vikunja
+         url: "{{HOMEPAGE_VAR_VIKUNJA_PUBLIC_URL}}"
+         key: "{{HOMEPAGE_VAR_VIKUNJA_API}}"
+         enableTaskList: true # optional, defaults to false
+   - Audiobookshelf:
+       icon: audiobookshelf.svg
+       href: "{{HOMEPAGE_VAR_AUDIOBOOKSHELF_INTERNAL_URL}}"
+       description: Self-hosted audiobook and podcast server
+       widget:
+         type: audiobookshelf
+         url: "{{HOMEPAGE_VAR_AUDIOBOOKSHELF_PUBLIC_URL}}"
+         key: "{{HOMEPAGE_VAR_AUDIOBOOKSHELF_API}}"
+   - Jellyseerr:
+       icon: jellyseerr.svg
+       href: "{{HOMEPAGE_VAR_JELLYSEERR_URL}}"
+       description: Media Requests
+       widget:
+         type: jellyseerr
+         url: "{{HOMEPAGE_VAR_JELLYSEERR_URL}}"
+         key: "{{HOMEPAGE_VAR_JELLYSEERR_API_TOKEN}}"
+
+
+- Downloads&Bookmarks:
+    - Rutorrent:
+        icon: rutorrent.svg
+        href: "{{HOMEPAGE_VAR_RUTORRENT_URL}}"
+        description: Torrent Client
+        widget:
+          type: rutorrent
+          url: "{{HOMEPAGE_VAR_RUTORRENT_URL}}"
+          username: "{{HOMEPAGE_VAR_RUTORRENT_USER}}" # optional, false if not used
+          password: "{{HOMEPAGE_VAR_RUTORRENT_PASS}}" # optional, false if not used
+    - Amule:
+        icon: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0V8l2DU9DiIcsXcnCO_CckoKBXPX2ZlVxfw&s
+        href: "{{HOMEPAGE_VAR_AMULE_URL}}"
+        description: eMule client for Linux
+    - Proton:
+        icon: proton-mail
+        href: "https://mail.proton.me/"
+    - Amazon:
+        icon: amazon
+        href: "https://www.amazon.es/"
+    - LinkedIn:
+        icon: linkedin
+        href: "https://www.linkedin.com/"
+
+
+- Health&Photos&Videos:
+    - Scrutiny:
+        icon: scrutiny.svg
+        href: "{{HOMEPAGE_VAR_SCRUTINY_URL}}"
+        description: HDD Health Check
+        widget:
+          type: scrutiny
+          url: "{{HOMEPAGE_VAR_SCRUTINY_URL}}"
+    - Grafana:
+        icon: grafana.svg
+        href: "{{HOMEPAGE_VAR_GRAFANA_URL}}"
+        description: Data Visualization
+        widget:
+          type: grafana
+          url: "{{HOMEPAGE_VAR_GRAFANA_URL}}"
+          username: "{{HOMEPAGE_VAR_GRAFANA_USER}}"
+          password: "{{HOMEPAGE_VAR_GRAFANA_PASS}}"
+    - Immich:
+        icon: immich.svg
+        href: "{{HOMEPAGE_VAR_IMMICH_URL}}"
+        description: Photos & Videos Backup
+        widget:
+          type: immich
+          url: "{{HOMEPAGE_VAR_IMMICH_URL}}"
+          key: "{{HOMEPAGE_VAR_IMMICH_API_TOKEN}}"
+          version: 2
+
+- Management:
+    - Swag:
+        icon: https://content.invisioncic.com/u329766/monthly_2020_05/linuxserver-ls-logo.thumb.png.2af7574ab0c1b1f7105aeb62a9159936.png
+        href: "{{HOMEPAGE_VAR_SWAG_URL}}"
+        description: Reverse Proxy Dashboard
+        widget:
+          type: swagdashboard
+          url: "{{HOMEPAGE_VAR_SWAG_URL}}" # http://swagdashboard.host.or.ip:adminport / default port is 81
+    - Pi-hole:
+        icon: https://wp-cdn.pi-hole.net/wp-content/uploads/2016/12/Vortex-R.png.webp
+        href: "{{HOMEPAGE_VAR_PIHOLE_ADMIN_URL}}"
+        description: DNS sinkhole and ad blocker
+        widget:
+          type: pihole
+          url: "{{HOMEPAGE_VAR_PIHOLE_URL}}"
+          version: 6
+          key: "{{HOMEPAGE_VAR_PIHOLE_PWD}}" # "{{HOMEPAGE_VAR_PIHOLE_API_KEY}}"  # optional, in v6 can be your password or app password
+    - Portainer:
+        icon: portainer.svg
+        href: "{{HOMEPAGE_VAR_PORTAINER_HTTPS_URL}}"
+        description: Docker Management
+    - Gotify:
+        icon: gotify.svg
+        href: "{{HOMEPAGE_VAR_GOTIFY_INTERNAL_URL}}"
+        description: A simple server for sending and receiving messages in real-time per WebSocket
+          #widget:
+          #type: gotify
+          #url: "{{HOMEPAGE_VAR_GOTIFY_INTERNAL_URL}}"
+          #key: "{{HOMEPAGE_VAR_GOTIFY_KEY}}"
+    - Web-Check:
+        icon: http://192.168.1.110:33000/web-check.png
+        href: "{{HOMEPAGE_VAR_WEBCHECK_INTERNAL_URL}}"
+        description: All-in-one OSINT tool for analysing any website
+
+- Encode:
+   - Handbrake:
+       icon: https://blog.uchceu.es/comunicacion-audiovisual/wp-content/uploads/sites/11/2016/02/Programa_HandBrake.png
+       href: "{{HOMEPAGE_VAR_HANDBRAKE_URL}}"
+       description: Encode & Rip videos
+   - MKVToolnix:
+       icon: https://images.sftcdn.net/images/t_app-icon-m/p/0139432c-96d2-11e6-bf6c-00163ec9f5fa/4289325158/mkvtoolnix-icon.png
+       href: "{{HOMEPAGE_VAR_MKVTOOLNIX_URL}}"
+       description: Mux video, audio and subs
