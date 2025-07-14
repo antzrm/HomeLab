@@ -5,8 +5,6 @@ Self-host Docker container apps
 
 **CyberChef** - The Cyber Swiss Army Knife - a web app for encryption, encoding, compression and data analysis https://gchq.github.io/CyberChef/
 
-**Gotify** - A simple server for sending and receiving messages  https://gotify.net/
-
 **HandBrake** - Open Source Video Transcoder https://handbrake.fr/
 
 **homepage** - Highly customizable application dashboard with integrations https://gethomepage.dev/
@@ -31,7 +29,7 @@ Self-host Docker container apps
 
 **Vikunja** - The open-source, self-hostable to-do app https://vikunja.io/
 
-**Watchtower** -  A container-based solution for automating Docker container base image updates https://containrrr.dev/watchtower/
+**Watchtower** -  A container-based solution for automating Docker container base image updates https://containrrr.dev/watchtower/ using **Gotify** notifications - **Gotify** is a simple server for sending and receiving messages  https://gotify.net/
 
 **Web-check** - X-Ray Vision for any Website https://web-check.xyz/
 
