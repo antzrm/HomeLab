@@ -14,7 +14,7 @@ services:
       - VALIDATION=dns 
       - DNSPLUGIN=desec
       - SUBDOMAINS=wildcard
-      - PROPAGATION=300
+      - PROPAGATION=300 # Increase PROPAGATION from 30 secs to 300 secs since for some DDNS the ACME challenge might fail
       - DOCKER_MODS=linuxserver/mods:swag-dashboard|linuxserver/mods:swag-dbip
     volumes:
       - /home/minipc/docker/swag/config:/config
