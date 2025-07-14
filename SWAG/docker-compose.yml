@@ -14,7 +14,7 @@ services:
       - VALIDATION=dns 
       - DNSPLUGIN=desec
       - SUBDOMAINS=wildcard
-      - PROPAGATION=30
+      - PROPAGATION=300
       - DOCKER_MODS=linuxserver/mods:swag-dashboard|linuxserver/mods:swag-dbip
     volumes:
       - /home/minipc/docker/swag/config:/config
