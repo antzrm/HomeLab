@@ -11,7 +11,7 @@ services:
       - JELLYFIN_PublishedServerUrl=192.168.1.110 # optional, this is the IP of the host running Jellyfin server
       - DOCKER_MODS=linuxserver/mods:jellyfin-opencl-intel
     volumes:
-      - /merged/jellyfin/config:/config
+      - /home/minipc/jellyfin/config:/config
       - /home/minipc/docker/jellyfin/transcodes:/transcodes
       - /merged/rutorrent/downloads/TV:/data/tvshows:ro # only read-only mode so Jellyfin will not be avable to delete media files by mistake
       - /merged/rutorrent/downloads/movies:/data/movies:ro
