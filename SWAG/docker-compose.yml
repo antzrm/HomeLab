@@ -2,28 +2,28 @@ services:
   swag:
     image: lscr.io/linuxserver/swag:latest
     container_name: swag
-    cap_add:
+    cap_add: # need this special privilege to work with the network
       - NET_ADMIN
-    networks:
-       proxy:
+    networks: # network added to expose services using the same network as this SWAG container
+       proxy: 
     environment:
       - PUID=1000
       - PGID=1000
       - TZ=Europe/Madrid
-      - URL=REDACTED.dedyn.io # only include domain.dedyn.io here, not jellyfin.domain.dedyn.io for example
-      - VALIDATION=dns 
-      - DNSPLUGIN=desec
-      - SUBDOMAINS=wildcard
+      - URL=REDACTED.dedyn.io # only include domain.test.com here, not subdomain.domain.test.com (this is the domain of the server)
+      - VALIDATION=dns # validation method for the certificate
+      - DNSPLUGIN=desec # DNS plugin to use for the certificate
+      - SUBDOMAINS=wildcard # subdomains to use for the certificate (wildcard is used to create a certificate for all subdomains)
       - PROPAGATION=300 # Increase PROPAGATION from 30 secs to 300 secs since for some DDNS the ACME challenge might fail
-      - DOCKER_MODS=linuxserver/mods:swag-dashboard|linuxserver/mods:swag-dbip
+      - DOCKER_MODS=linuxserver/mods:swag-dashboard|linuxserver/mods:swag-dbip # Docker mods to use for the container (swag-dashboard is used to show the dashboard and swag-dbip is used to get the IP address of the server)
     volumes:
       - /home/minipc/docker/swag/config:/config
-      - /merged/jellyfin/config/log:/jellyfin:ro # where Jellyfin logs are stored, useful for Fail2ban rules
     ports:
-      - 81:81 # SWAG dashboard will be accessible locally on http://LOCAL_IP:81
-      - 64443:443 # any port from the server (64443 in this case, which we would configure on the router as external port 443 - internal port 64443) will be redirected to 443 port on the container
+      - "192.168.1.110:81:81" # SWAG dashboard will be accessible locally on http://LOCAL_IP:81
+      - "192.168.1.110:65001:443/tcp" # first port will be the one we open on the router and the second we leave it as 443
+      - "192.168.1.110:65001:443/udp" # same for UDP protocol (to be able to use QUIC HTTP/3)     
     restart: always
 
-networks:
+networks: # network added to expose services using the same network as this SWAG container
   proxy:
     external: true

@@ -10,7 +10,7 @@ services:
     image: prom/prometheus:latest
     container_name: prometheus
     ports:
-      - "9090:9090"
+      - "192.168.1.110:9090:9090"
     volumes:
       - /etc/prometheus:/config
       - prometheus-data:/prometheus
@@ -22,7 +22,7 @@ services:
     image: grafana/grafana:latest
     container_name: grafana  
     ports:
-      - "3000:3000"
+      - "192.168.1.110:3000:3000"
     volumes:
       - grafana-data:/var/lib/grafana
     restart: unless-stopped
@@ -42,7 +42,7 @@ services:
     container_name: cadvisor
     restart: always
     ports:
-      - 8282:8080
+      - 192.168.1.110:8282:8080
     volumes:
       - /:/rootfs:ro
       - /var/run:/var/run:ro
@@ -51,4 +51,3 @@ services:
       - /dev/disk/:/dev/disk:ro
     devices:
       - /dev/kmsg
-

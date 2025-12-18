@@ -2,7 +2,7 @@ services:
   handbrake:
     image: jlesage/handbrake
     ports:
-      - "50800:5800"
+      - "192.168.1.110:50800:5800"
     environment:
       - USER_ID=1000
       - GROUP_ID=1000
@@ -13,7 +13,7 @@ services:
       - /dev/dri:/dev/dri
     volumes:
       - "/docker/handbrake/appdata:/config:rw"
-      - "/merged/rutorrent/downloads/source:/storage:ro"
-      - "/merged/rutorrent/downloads/output:/output:rw"
+      - "/merged/downloads/source:/storage:ro"
+      - "/merged/downloads/output:/output:rw"
     restart:
       always

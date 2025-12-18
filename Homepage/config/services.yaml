@@ -121,10 +121,10 @@
         icon: gotify.svg
         href: "{{HOMEPAGE_VAR_GOTIFY_INTERNAL_URL}}"
         description: A simple server for sending and receiving messages in real-time per WebSocket
-          #widget:
-          #type: gotify
-          #url: "{{HOMEPAGE_VAR_GOTIFY_INTERNAL_URL}}"
-          #key: "{{HOMEPAGE_VAR_GOTIFY_KEY}}"
+        widget:
+          type: gotify
+          url: "{{HOMEPAGE_VAR_GOTIFY_INTERNAL_URL}}" 
+          key: "{{HOMEPAGE_VAR_GOTIFY_KEY}}" 
     - Web-Check:
         icon: http://192.168.1.110:33000/web-check.png
         href: "{{HOMEPAGE_VAR_WEBCHECK_INTERNAL_URL}}"

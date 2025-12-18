@@ -8,7 +8,7 @@ services:
     networks:
       - notify-net
     ports:
-      - 8070:80
+      - 192.168.1.110:8070:80
     volumes:
       - /home/minipc/docker/gotify:/app/data
     restart: unless-stopped
@@ -31,7 +31,7 @@ services:
       WATCHTOWER_SCHEDULE: 0 0 4 * * * # run Watchtower every day at 4 am
       # WATCHTOWER_RUN_ONCE: true
       WATCHTOWER_WARN_ON_HEAD_FAILURE: "never"       # Disable HEAD warnings
-      WATCHTOWER_DISABLE_CONTAINERS: "jellyfin rtorrent-rutorrent" # disable containers I do not want to be updated automatically
+      WATCHTOWER_DISABLE_CONTAINERS: "jellyfin rtorrent-rutorrent" # disable containers we do not want to be updated automatically
       WATCHTOWER_ROLLING_RESTART: "true"       # you can tell watchtower to do updates and restarts one by one - can be helpful
-      WATCHTOWER_NOTIFICATIONS: "shoutrrr"
-      WATCHTOWER_NOTIFICATION_URL: "gotify://gotify:80/TOKEN?title=Watchtower&disabletls=yes"
+      WATCHTOWER_NOTIFICATIONS: "shoutrrr" # use shoutrrr to send notifications to Gotify
+      WATCHTOWER_NOTIFICATION_URL: "gotify://gotify:80/GOTIFY_TOKEN?title=Watchtower&disabletls=yes" # use the token we created in Gotify to send notifications there

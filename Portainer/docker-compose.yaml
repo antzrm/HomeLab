@@ -3,9 +3,8 @@ services:
     image: portainer/portainer-ce:latest
     container_name: portainer
     ports:
-      - 8100:8000
-      - 9443:9443
-        #      - 9900:9000 # for http
+      - 192.168.1.110:8100:8000
+      - 192.168.1.110:9443:9443
     volumes:
       - /home/minipc/docker/portainer/data:/data
       - /var/run/docker.sock:/var/run/docker.sock
